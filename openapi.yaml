@@ -308,7 +308,8 @@ components:
       properties:
         status:
           type: string
-          enum: [ok]
+          enum: -ok
+                -error
           description: Trạng thái service.
           example: ok
         service:
@@ -337,7 +338,10 @@ components:
           example: core-business
         alertType:
           type: string
-          enum: [UNAUTHORIZED_ACCESS, SENSOR_THRESHOLD_EXCEEDED, UNKNOWN_PERSON, SYSTEM_ERROR]
+          enum: -LOW
+                -MEDIUM
+                -HIGH
+                -CRITICAL
           description: Loại cảnh báo.
           example: UNAUTHORIZED_ACCESS
         severity:
@@ -368,7 +372,9 @@ components:
               example: 0196fb3d-4ad7-7d1e-9f49-5d5148d2babc
             status:
               type: string
-              enum: [OPEN, ACKNOWLEDGED, RESOLVED]
+              enum: -OPEN
+                    -IN_PROGRESS
+                    -RESOLVED
               description: Trạng thái xử lý alert.
               example: OPEN
             createdAt:
@@ -384,7 +390,10 @@ components:
 
     AlertSeverity:
       type: string
-      enum: [LOW, MEDIUM, HIGH, CRITICAL]
+      enum: -LOW
+            -MEDIUM
+            -HIGH
+            -CRITICAL
       description: Mức độ nghiêm trọng của cảnh báo.
       example: HIGH
 
@@ -439,7 +448,11 @@ components:
           example: SENSOR-001
         metric:
           type: string
-          enum: [temperature, humidity, smoke, motion]
+          enum: -temperature
+                -humidity
+                -smoke
+                -motion
+               
           description: Loại chỉ số cảm biến.
           example: temperature
         value:
@@ -485,7 +498,8 @@ components:
           example: RFID-2026-001
         decision:
           type: string
-          enum: [ALLOW, DENY]
+          enum: -ALLOW
+                -DENY
           description: Quyết định truy cập.
           example: ALLOW
         timestamp:
